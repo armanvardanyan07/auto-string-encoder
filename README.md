@@ -1,21 +1,22 @@
-# Auto Preprocessing Toolkit
+# Auto String Encoder
 
 [![Python Version](https://img.shields.io/badge/python-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/)
 
-A lightweight and efficient utility designed to automate routine data preprocessing tasks for machine learning pipelines. This tool focuses on automatic handling of missing values and smart in-place encoding of categorical text variables directly within pandas DataFrames.
+A lightweight python utility designed to automate the routine task of converting text and categorical variables into integer format for machine learning models. The function automatically scans the data and performs in-place transformations to optimize memory usage.
 
 ---
 
 ## Features
 
-* **In-Place Categorical Encoding (`auto_encode`):** Detects all object and string columns, converts them to valid strings, and encodes them into integers using `LabelEncoder`. The modifications are applied directly to the original DataFrame to save operational memory. Returns a dictionary containing all fitted encoder objects for future inverse transformations.
-* **Smart Missing Value Imputation (`fill_none`):** Automatically determines column data types to apply optimal missing data strategies. Text columns are filled using the mode or a fallback token. Numerical columns are imputed using the median to stay robust against outliers.
+* **Automatic Target Selection:** Scans the entire DataFrame and automatically filters out only `object` and `string` data types.
+* **In-Place Modification:** Modifies the source DataFrame directly without duplicating data in memory.
+* **Encoder Tracking:** Saves and returns every fitted `LabelEncoder` instance in a dictionary, allowing for future mapping and inverse transformations (`inverse_transform`).
 
 ---
 
 ## Installation & Dependencies
 
-Ensure you have `pandas` and `scikit-learn` installed in your environment:
+Ensure you have `pandas` and `scikit-learn` installed:
 
 ```bash
 pip install pandas scikit-learn
